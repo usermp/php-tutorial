@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP - SESSION 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="//fdn.fontcdn.ir">
+    <link rel="preconnect" href="//v1.fontapi.ir">
+    <link href="https://v1.fontapi.ir/css/Sahel:300;400;600;700" rel="stylesheet">
+    <style>
+        * {
+            font-family: Sahel, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto grid grid-cols-12 gap-20">
+    <h1 class="text-[22px] font-bold text-center col-span-12 text-[red] w-full">جلسه اول</h1>
+
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            معرفی PHP و نحوه کارکرد آن</h2>
+        <p class="leading-8"><strong>PHP</strong> (مخفف Hypertext Preprocessor) یک زبان برنامه‌نویسی سمت سرور است که
+            ابتدا در سال ۱۹۹۴
+            توسط راسموس لِردورف <a href="https://de.wikipedia.org/wiki/Rasmus_Lerdorf">Rasmus Lerdorf</a> ایجاد شد. PHP
+            ابتدا برای ایجاد صفحات وب پویا بکار گرفته می‌شد، اما به تدریج به یک زبان برنامه‌نویسی کامل و پرکاربرد تبدیل
+            شد.</p>
+        <p class="leading-8">یکی از ویژگی‌های مهم PHP این است که اجرای کدهای آن بر روی سرور صورت می‌گیرد و نتیجه برای
+            کاربر در قالب یک
+            صفحه HTML ارسال می‌شود. به این ترتیب، PHP می‌تواند اطلاعاتی را از پایگاه داده دریافت کرده، آن‌ها را پردازش
+            کرده و نتیجه را به صورت پویا به کاربر نمایش دهد.</p>
+        <p class="leading-8">PHP یک زبان برنامه‌نویسی قابل تفسیر است، یعنی کدهای PHP به زبان ماشین تبدیل نمی‌شوند و
+            برنامه نوشته شده بر
+            روی سرور در هر درخواست از مرورگر اجرا می‌شود. این ویژگی باعث می‌شود PHP بسیار قابل انعطاف و قدرتمند در
+            برنامه‌نویسی وب باشد.</p>
+        <p class="leading-8">نحوه کارکرد PHP به این صورت است که کدهای PHP درون برچسب‌های <code
+                class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php</code> و <code
+                class="bg-[#ccc] text-[#000] p-2 rounded-lg">?&gt;</code> قرار
+            می‌گیرند و سپس توسط موتور PHP بر روی سرور پردازش می‌شوند. در طول پردازش، PHP قادر است با استفاده از توابع و
+            دستورات خاص خود، اطلاعات را از فرم‌ها، پارامترها و پایگاه داده دریافت کرده، آن‌ها را پردازش کند و نتیجه را
+            به صفحه HTML تولید کند.</p>
+        <p class="leading-8">به عنوان یک زبان برنامه‌نویسی، PHP قابلیت‌های زیادی را در اختیار برنامه‌نویسان قرار می‌دهد،
+            از جمله مدیریت
+            فایل، ارسال ایمیل، تولید PDF، کار با پایگاه داده‌ها، ایجاد سیستم‌های مدیریت محتوا و بسیاری از وظایف
+            دیگر.</p>
+        <p class="leading-8">همچنین، PHP یک زبان متن باز است و به رایگان در دسترس است، بنابراین افراد بسیاری از آن
+            استفاده می‌کنند و جامعه
+            فعالی از برنامه‌نویسان PHP وجود دارد که ابزارها، کتابخانه‌ها و راهنماهای مفیدی را برای توسعه دهندگان فراهم
+            می‌کنند.</p>
+    </div>
+    <div class="border border-[#ccc]  shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            نصب و پیکربندی PHP با استفاده از XAMPP</h2>
+        <p class="leading-8"> (XAMPP) یک بسته نرم‌افزاری رایگان است که شامل نرم‌افزارهای Apache، MySQL/MariaDB و PHP است
+            و برای توسعه و
+            تست
+            برنامه‌های وب به کار می‌رود. این بسته برای سه سیستم‌عامل Windows، macOS و Linux در دسترس است. نصب و پیکربندی
+            PHP
+            با استفاده از XAMPP به صورت زیر انجام می‌شود:</p>
+        <h3 class="font-bold text-[16px] mt-4">برای سیستم‌عامل Windows:</h3>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>دانلود XAMPP: به وب‌سایت Apache Friends (apachefriends.org) بروید و نسخه XAMPP مناسب برای سیستم‌عامل
+                Windows
+                را دانلود کنید.
+            </li>
+            <li>نصب XAMPP: پس از دانلود، برنامه نصب XAMPP را اجرا کنید و به دستورالعمل‌های نصب پیروی کنید.</li>
+            <li>راه‌اندازی XAMPP: پس از نصب، برنامه XAMPP Control Panel را اجرا کنید. از طریق این پنل، سرویس‌های Apache
+                و
+                MySQL را راه‌اندازی کنید.
+            </li>
+            <li>پیکربندی PHP: فایل php.ini را در پوشه نصب XAMPP (معمولاً C:\xampp) پیدا کنید و باز کنید. در این فایل،
+                می‌توانید تنظیمات مورد نیاز PHP را اعمال کنید.
+            </li>
+            <li>تست PHP: برای تست نصب و پیکربندی صحیح PHP، می‌توانید یک فایل PHP ساده با پسوند .php ایجاد کنید و کد زیر
+                را
+                در آن قرار دهید:
+                <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php phpinfo(); ?&gt;</code>
+            </li>
+        </ul>
+        <p class="leading-8">سپس فایل را در پوشه <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">htdocs</code> که در
+            پوشه نصب XAMPP قرار دارد، ذخیره کنید. در مرورگر خود <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">http://localhost/نام_فایل.php</code>
+            را وارد کنید و باید اطلاعات مربوط به PHP و پیکربندی‌های آن را مشاهده کنید.</p>
+        <h3 class="font-bold text-[16px] mt-4">برای سیستم‌عامل macOS:</h3>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>دانلود XAMPP: به وب‌سایت Apache Friends (apachefriends.org) بروید و نسخه XAMPP مناسب برای سیستم‌عامل
+                macOS
+                را دانلود کنید.
+            </li>
+            <li>نصب XAMPP: پس از دانلود، بسته نرم‌افزاری XAMPP را دو بار کلیک کنید و به دستورالعمل‌های نصب پیروی کنید.
+            </li>
+            <li>راه‌اندازی XAMPP: پس از نصب، XAMPP Control Panel را اجرا کنید. از طریق این پنل، سرویس‌های Apache و MySQL
+                را
+                راه‌اندازی کنید.
+            </li>
+            <li>پیکربندی PHP: فایل php.ini را در پوشه نصب XAMPP (معمولاً /Applications/XAMPP) پیدا کنید و باز کنید. در
+                این
+                فایل، می‌توانید تنظیمات مورد نیاز PHP را اعمال کنید.
+            </li>
+            <li>تست PHP: برای تست نصب و پیکربندی صحیح PHP، می‌توانید یک فایل PHP ساده با پسوند .php ایجاد کنید و کد زیر
+                را
+                در آن قرار دهید:
+                <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php phpinfo(); ?&gt;</code>
+            </li>
+        </ul>
+        <p>سپس فایل را در پوشه <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">/Applications/XAMPP/htdocs</code>
+            ذخیره کنید. در مرورگر خود <code
+                    class="bg-[#ccc] text-[#000] p-2 rounded-lg">http://localhost/نام_فایل.php</code>
+            را وارد کنید و باید اطلاعات مربوط به PHP و پیکربندی‌های آن را مشاهده کنید.</p>
+        <h3 class="font-bold text-[16px] mt-4">برای سیستم‌عامل Linux:</h3>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>دانلود XAMPP: به وب‌سایت Apache Friends (apachefriends.org) بروید و نسخه XAMPP مناسب برای سیستم‌عامل
+                Linux
+                را دانلود کنید.
+            </li>
+            <li>نصب XAMPP: پس از دانلود، فایل نصب XAMPP را از حالت فشرده خارج کنید و به دستورالعمل‌های نصب پیروی کنید.
+            </li>
+            <li>
+                راه‌اندازی XAMPP: پس از نصب، ترمینال را باز کنید و دستور زیر را اجرا کنید تا به پوشه نصب XAMPP بروید:
+                <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">cd /opt/lampp</code>
+            </li>
+        </ul>
+        <p class="mb-2 leading-8">سپس دستور زیر را برای راه‌اندازی سرویس‌های Apache و MySQL وارد کنید:
+            <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">sudo ./xampp start</code>
+        </p>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>پیکربندی PHP: فایل php.ini را در پوشه نصب XAMPP (معمولاً /opt/lampp) پیدا کنید و باز کنید. در این فایل،
+                می‌توانید تنظیمات مورد نیاز PHP را اعمال کنید.
+            </li>
+            <li>تست PHP: برای تست نصب و پیکربندی صحیح PHP، می‌توانید یک فایل PHP ساده با پسوند .php ایجاد کنید و کد زیر
+                را
+                در آن قرار دهید:
+                <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php phpinfo(); ?&gt;</code>
+            </li>
+        </ul>
+        <p class="leading-8 mb-2">سپس فایل را در پوشه <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">/opt/lampp/htdocs</code>
+            ذخیره کنید. در مرورگر خود
+            <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">http://localhost/نام_فایل.php</code> را وارد کنید و باید
+            اطلاعات مربوط به PHP و پیکربندی‌های آن را
+            مشاهده
+            کنید.</p>
+        <p>با نصب و پیکربندی XAMPP، شما می‌توانید PHP را روی سرور خود اجرا کنید و برنامه‌های PHP خود را توسعه دهید و تست
+            کنید.</p>
+
+    </div>
+    <div class="border border-[#ccc]  shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            ساختار یک برنامه PHP ساده</h2>
+        <p>ساختار یک برنامه PHP ساده شامل چند قسمت اصلی است که در ادامه به طور خلاصه توضیح داده می‌شود:</p>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>تعریف تگ PHP: یک برنامه PHP با تعریف تگ PHP آغاز می‌شود. شما باید تمام کد PHP خود را بین تگ‌های <code
+                    class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php</code>
+                و <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">?&gt;</code> قرار دهید. به عنوان مثال:
+            </li>
+        </ul>
+        <p><code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php // کدهای PHP در اینجا قرار می‌گیرند ?&gt;</code>
+        </p>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>متغیرها و نمایش داده‌ها: در برنامه PHP، شما می‌توانید متغیرها را تعریف کرده و از آن‌ها برای ذخیره و
+                نمایش
+                داده‌ها استفاده کنید. به عنوان مثال:
+
+            </li>
+
+        </ul>
+        <p class="mb-6"><code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php $name = &quot;John&quot;; echo
+            &quot;Hello, &quot; . $name . &quot;!&quot;; ?&gt;</code></p>
+        <p>در این مثال، متغیر <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">$name</code> تعریف شده و مقدار &quot;John&quot;
+            به آن اختصاص داده شده است. سپس با
+            استفاده از تابع <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">echo</code>، مقدار متغیر <code
+                    class="bg-[#ccc] text-[#000] p-2 rounded-lg">$name</code> نمایش داده می‌شود.</p>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>ساختار شرطی: شما می‌توانید بر اساس شرایط مختلف، بخشی از کد را اجرا یا رد کنید. این به شما امکان می‌دهد
+                تصمیم
+                بگیرید که کد چه عملیاتی را انجام دهد. به عنوان مثال:
+            </li>
+        </ul>
+        <p class="mb-6"><code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php $age = 20; if ($age &gt;= 18) { echo
+            &quot;شما مجاز به ورود هستید.&quot;; } else { echo &quot;شما
+            مجاز به ورود نیستید.&quot;; } ?&gt;</code></p>
+        <p>در این مثال، بر اساس مقدار متغیر <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">$age</code>، برنامه تصمیم
+            می‌گیرد که پیام مناسب را نمایش دهد.</p>
+        <ul class="leading-8 list-disc px-10 py-6">
+            <li>حلقه‌ها: حلقه‌ها به شما امکان می‌دهند تا یک قسمت از کد را تکرار کنید تا زمانی که یک شرط خاص برقرار باشد.
+                این
+                برای پردازش مجموعه‌ای از داده‌ها یا انجام یک عملیات تکراری مفید است. به عنوان مثال:
+            </li>
+        </ul>
+        <p class="mb-6"><code class="bg-[#ccc] text-[#000] p-2 rounded-lg">&lt;?php for ($i = 1; $i &lt;= 5; $i++) {
+            echo $i . &quot; &quot;; } ?&gt;</code></p>
+        <p class="mb-4">در این مثال، یک حلقه <code class="bg-[#ccc] text-[#000] p-2 rounded-lg">for</code> برای تکرار
+            عدد 1 تا 5 ایجاد شده است و هر عدد در هر بار تکرار نمایش داده
+            می‌شود.</p>
+        <p class="mb-2">این فقط یک مثال ساده از ساختار یک برنامه PHP است. بسته به نیازهای شما، می‌توانید از سایر عناصر
+            مانند توابع،
+            آرایه‌ها و کلاس‌ها نیز استفاده کنید. ساختار کدها و تنوع قابلیت‌های PHP با توجه به پروژه و نیازهای شما متفاوت
+            خواهد بود.</p>
+    </div>
+
+</div>
+</body>
+</html>
