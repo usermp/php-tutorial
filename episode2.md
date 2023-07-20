@@ -1,5 +1,3 @@
-PHP - SESSION 2    \* { font-family: Sahel, sans-serif; }
-
 جلسه دوم
 ========
 
