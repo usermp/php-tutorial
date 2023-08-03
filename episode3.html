@@ -20,6 +20,71 @@
     <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
         <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
             آرایه‌ها و رشته‌ها</h2>
+
+        <p class="leading-8"><strong>آرایه‌ها و رشته‌ها از جمله اجزای اصلی زبان برنامه‌نویسی PHP هستند.</strong> این دو
+            نوع داده به شما امکان ذخیره و مدیریت اطلاعات مختلف را در برنامه‌های PHP می‌دهند. در ادامه، توضیح کاملی از
+            آرایه‌ها و رشته‌ها در PHP ارائه می‌دهم:</p>
+        <p class="leading-8"><strong>۱. آرایه‌ها (Arrays): </strong> آرایه‌ها در PHP به شما اجازه می‌دهند تا مجموعه‌ای از
+            مقادیر مرتبط را در یک متغیر ذخیره کنید. هر مقدار در آرایه دارای یک کلید (همچنین معروف به اندیس) است که از
+            نوع عددی یا رشته‌ای می‌تواند باشد. کلید‌های عددی به صورت خودکار از <strong>0</strong> به بالا اختصاص
+            می‌یابند.
+        </p>
+        <p class="leading-8">برای تعریف یک آرایه در PHP، می‌توانید از دو روش استفاده کنید:</p>
+        <p class="leading-8"><strong> الف) تعریف آرایه خالی: </strong></p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg"> $array = array();</pre>
+        یا:
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">$array = [];</pre>
+        <p class="leading-8"><strong> ب) تعریف آرایه با مقادیر اولیه:</strong></p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg"> $array = array(1, 2, 3, "Hello", true);</pre>
+        یا:
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">$array = [1, 2, 3, "Hello", true];</pre>
+        <p class="leading-8">برای دسترسی به مقادیر آرایه، می‌توانید از کلید مربوطه استفاده کنید. به عنوان مثال:</p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">echo $array[0]; // نمایش مقدار ۱
+echo $array[3]; // نمایش مقدار "Hello"</pre>
+        <p class="leading-8">
+            <i>
+                همچنین، می‌توانید با دستورات کنترل جریان (مانند حلقه‌ها) از تمام مقادیر آرایه بازدید کنید و عملیات مختلفی بر روی
+                آن‌ها انجام دهید.
+            </i>
+        </p>
+        <p class="leading-8"><strong>۲. رشته‌ها (Strings):</strong>
+
+        رشته‌ها در PHP مجموعه‌ای از کاراکترها هستند که برای نمایش متن‌ها استفاده می‌شوند. <strong>رشته‌ها می‌توانند در نقل
+                قول‌های تکی یا دوتایی قرار گیرند</strong>. به عنوان مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">$single_quoted_string = 'This is a single-quoted string.';
+$double_quoted_string = "This is a double-quoted string.";</pre>
+        <p class="leading-8">
+        یکی از ویژگی‌های جالب رشته‌ها در PHP، قابلیت جایگذاری مقادیر متغیرها درون رشته‌ها است. این عملکرد به نام
+        <strong>Interpolation</strong> شناخته می‌شود و با استفاده از نقل قول‌های دوتایی انجام می‌شود. به عنوان مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+$name = "John";
+$age = 30;
+echo "My name is $name and I am $age years old.";
+// نتیجه: "My name is John and I am 30 years old."
+        </pre>
+        <p class="leading-8">
+        علاوه بر این، PHP دارای تعداد زیادی تابع برای کار با رشته‌ها می‌باشد. این توابع شامل جستجو، جایگزینی، برش، ادغام
+        و... هستند. برای مثال چند نمونه تابع:</p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        <p class="leading-8"><strong> strlen($string):</strong> بازگرداندن طول رشته به صورت تعداد کاراکترها.</p>
+        <p class="leading-8"><strong> strpos($string, $search):</strong> پیدا کردن اولین وقوع زیررشته مورد نظر در رشته اصلی. در صورت عدم یافتن، مقدار بازگشتی FALSE خواهد بود.</p>
+        <p class="leading-8"><strong> substr($string, $start, $length):</strong> استخراج زیررشته‌ای از رشته اصلی با شروع از $start و طول $length.</p>
+        <p class="leading-8"><strong> str_replace($search, $replace, $string):</strong> جایگزینی تمام وقوع‌های یک زیررشته مورد نظر با رشته جدید در رشته اصلی.</p>
+        <p class="leading-8"><strong> strtolower($string) و strtoupper($string):</strong> تبدیل رشته به حالت حروف کوچک و بزرگ.</p>
+        <p class="leading-8"><strong> trim($string) و ltrim($string) و rtrim($string):</strong> حذف فضاهای اضافی از ابتدا، انتها و هر دو طرف رشته.</p>
+        <p class="leading-8"><strong> ucfirst($string) و ucwords($string):</strong> تبدیل حرف اول یا هر حرف اول هر کلمه به حروف بزرگ.</p>
+        <p class="leading-8"><strong> implode($glue, $pieces) و explode($delimiter, $string):</strong> تبدیل آرایه به رشته با افزودن $glue بین عناصر و تبدیل رشته به آرایه با جداکننده‌ی $delimiter.</p>
+        <p class="leading-8"><strong> preg_match($pattern, $string, $matches):</strong> بررسی و تطابق رشته با الگوهای قالب‌بندی پیشرفته (Regular Expressions) و در صورت مطابقت، اطلاعات مرتبط را در آرایه $matches ذخیره می‌کند.</p>
+        <p class="leading-8"><strong>sprintf($format, ...$args):</strong> ایجاد رشته‌ای فرمت‌شده بر اساس الگوهای مشخص و آرگومان‌های ورودی.</p>
+        </pre>
+        <p class="leading-8">
+        به طور خلاصه، آرایه‌ها به شما امکان ذخیره و مدیریت داده‌ها به صورت مجموعه‌ای از مقادیر با شناسه‌های یکتا را
+        می‌دهند و رشته‌ها برای کار با متن‌ها و رشته‌های مختلف به کار می‌روند. با استفاده از این داده‌ها، می‌توانید
+        برنامه‌های کاربردی و پویا در PHP بسازید.
+            برای آشنایی کامل با توابع php به <a href="https://www.php.net/manual/en/ref.strings.php" class="bg-[#FF0000] p-[5px] rounded">این وب سایت</a> مراجعه کنید
+        </p>
     </div>
 </div>
 </body>
