@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP - Episode 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="//fdn.fontcdn.ir">
+    <link rel="preconnect" href="//v1.fontapi.ir">
+    <link href="https://v1.fontapi.ir/css/Sahel:300;400;600;700" rel="stylesheet">
+    <style>
+        * {
+            font-family: Sahel, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto grid grid-cols-12 gap-20">
+    <h1 class="text-[22px] font-bold text-center col-span-12 text-[red] w-full">جلسه چهارم</h1>
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            حلقه ها</h2>
+        <p class="leading-8">
+            <strong>حلقه‌ها یا loops</strong> در زبان برنامه‌نویسی PHP برای تکرار کد و اجرای یک بلاک از دستورات به صورت
+            تکراری استفاده می‌شوند.
+            این ابزار برنامه‌نویسی به شما امکان می‌دهد تا کد‌های تکراری را با حداقل تکرار دستی اجرا کنید، تعدادی از
+            انواع حلقه‌ها در PHP عبارتند از:
+            <strong>for, foreach, while, do while</strong>
+        </p>
+        <p class="leading-8">
+            <strong>حلقه for:</strong>
+            حلقه for یکی از رایج‌ترین و معمول‌ترین نوع حلقه‌ها در PHP است. این حلقه برای تکرار یک بلاک از دستورات تعداد
+            مشخصی از بارها استفاده می‌شود. ساختار کلی حلقه for به صورت زیر است:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        for ($i = 10;$i <= 10;$i++) {
+        // بلاک دستورات که می‌خواهید تکرار شود
+        }
+
+        توضیح شروع $i = 10:  این قسمت مشخص می‌کند که حلقه از کجا شروع شود. به طور معمول، یک متغیر کنترلی تعریف می‌شود و مقدار اولیه آن
+        تعیین می‌شود.
+        توضیح شرط $i <= 10: این قسمت تعیین می‌کند که حلقه تا کجا ادامه یابد. مادامی که شرط برقرار باشد (true)، بلاک دستورات حلقه اجرا
+        می‌شود. اگر شرط برقرار نباشد (false)، حلقه پایان می‌یابد.
+        توضیح افزایش/کاهش $i++ یا $i--: این قسمت مشخص می‌کند چگونه مقدار متغیر کنترلی در هر دور از حلقه تغییر می‌کند. این مقدار معمولاً
+        افزایش یافته یا کاهش می‌یابد تا به شرط خاتمه حلقه برسیم.
+      </pre>
+        مثال:
+
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        for ($i = 1; $i <= 5; $i++){
+            echo "شماره: " . $i . PHP_EOL;
+            }
+        این کد شماره‌های 1 تا 5 را چاپ می‌کند.
+        </pre>
+        <p class="leading-8">
+        <strong>حلقه while:</strong>
+        حلقه while اجرای بلاک دستورات را تکرار می‌کند تا زمانی که شرط مشخص شده درست باشد. در این نوع حلقه، ابتدا شرط
+        بررسی می‌شود و اگر درست باشد، بلاک دستورات اجرا می‌شود. ساختار حلقه while به این شکل است:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        while ($i <= 5) {
+        // بلاک دستورات که می‌خواهید تکرار شود
+        }
+        </pre>
+        مثال:
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $i = 1;
+        while ($i <= 5) {
+        echo "شماره: " . $i . PHP_EOL;
+        $i++;
+        }
+        این کد همچنان شماره‌های 1 تا 5 را چاپ می‌کند.
+        </pre>
+        <p class="leading-8">
+        <strong>حلقه do-while:</strong>
+        حلقه do-while به همان ترتیبی که حلقه while کار می‌کند، با این تفاوت که ابتدا بلاک دستورات اجرا می‌شود و سپس شرط
+        بررسی می‌شود. بنابراین حداقل یک بار بلاک دستورات اجرا می‌شود حتی اگر شرط اولیه درست نباشد. ساختار حلقه do-while
+        به این شکل است:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        do {
+        // بلاک دستورات که می‌خواهید تکرار شود
+        } while ($i <= 5);
+        </pre>
+        مثال:
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $i = 1;
+        do {
+        echo "شماره: " . $i . PHP_EOL;
+        $i++;
+        } while ($i <= 5);
+        این کد همچنان شماره‌های 1 تا 5 را چاپ می‌کند.
+        </pre>
+
+        <p class="leading-8">
+       <strong>حلقه foreach: </strong>
+        حلقه foreach یک نوع خاص از حلقه‌ها در PHP است که برای تکرار اعضای یک آرایه یا شیء (object) با استفاده از یک
+        متغیر کنترلی استفاده می‌شود. این نوع حلقه به شما امکان می‌دهد به سادگی از همه عناصر موجود در آرایه یا شیء خود به
+        صورت متوالی بازدید کنید و دستورات مورد نظر خود را اجرا کنید.
+        ساختار کلی حلقه foreach به صورت زیر است:
+
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        foreach ($array_or_object as $item) {
+        // بلاک دستورات که می‌خواهید برای هر عنصر اجرا شود
+        }
+        $array_or_object: نام آرایه یا شیءی که می‌خواهید از اعضای آن بازدید کنید.
+        $item: یک متغیر که در هر مرحله از حلقه، مقدار عنصر فعلی آرایه یا شیء به آن اختصاص می‌یابد.
+        </pre>
+        مثال با آرایه:
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $colors = array("قرمز", "آبی", "سبز", "زرد");
+        foreach ($colors as $color) {
+        echo $color . PHP_EOL;
+        }
+                 این کد همه رنگ‌های موجود در آرایه $colors را چاپ می‌کند.
+        </pre>
+
+        <p class="leading-8">
+            این‌ها تنها چند نمونه از حلقه‌ها در PHP هستند. همچنین می‌توانید <strong>حلقه‌های تو در تو (nested loops)</strong> نیز بنویسید که
+            یک حلقه دیگر را درون بلاک دستورات یک حلقه دیگر قرار می‌دهد. این قابلیت به شما امکان می‌دهد الگوها و ساختارهای
+            پیچیده‌تری را به صورت تکراری ایجاد کنید.
+        </p>
+    </div>
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            ترفندهای کار با حلقه</h2>
+        <p class="leading-8">
+            در کار با حلقه‌ها در PHP می‌توان خلاقیت به خرج داد. خارج از خلاقیت‌هایی که همیشه در برنامه‌نویسی به کار می‌بریم، دو کلمه کلیدی برای عملیات‌های خاص در حلقه‌ها وجود دارند.
+            <strong>break, continue</strong>
+        </p>
+        <p class="leading-8">
+            <strong>دستور break: </strong>
+            فرض کنید می‌خواهیم وقتی به عدد 5 رسیدیم، اجرای حلقه به‌طور کامل متوقف شود! یعنی اعداد 5 و 6 و 7 چاپ نشوند. برای این کار از دستور break استفاده می‌کنیم:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        for( $i=1; $i<=7; $i++){
+           if( $i==5 ){ break;}
+            echo $i . ' ';
+        }
+        // نتیجه: 1 2 3 4
+        </pre>
+        <p class="leading-8">
+            <strong>دستور continue: </strong>
+            فرض کنید در این حلقه، می‌خواهیم از چاپ عدد 5 جلوگیری کنیم. در حالت قبلی از اجرای حلقه به‌طور کامل جلوگیری شد. اما با اجرای دستور continue فقط اجرای همان دُور از حلقه متوقف شده و به تکرار بعدی منتقل می‌شویم.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        for( $i=1; $i<=7; $i++){
+        if( $i==5 ){ continue;}
+        echo $i . ' ';
+        }
+        // Result: 1 2 3 4 6 7
+        </pre>
+    </div>
+</div>
+</body>
+</html>
