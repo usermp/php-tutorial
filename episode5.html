@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP - Episode 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="//fdn.fontcdn.ir">
+    <link rel="preconnect" href="//v1.fontapi.ir">
+    <link href="https://v1.fontapi.ir/css/Sahel:300;400;600;700" rel="stylesheet">
+    <style>
+        * {
+            font-family: Sahel, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto grid grid-cols-12 gap-20">
+    <h1 class="text-[22px] font-bold text-center col-span-12 text-[red] w-full">جلسه پنجم</h1>
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md"> function توابع</h2>
+        <p class="leading-8">
+            <strong>توابع : </strong>
+        توابع در PHP یکی از اجزای اصلی برنامه نویسی هستند که به شما اجازه می‌دهند کد را تا قطعه‌های کوچکتر تقسیم کرده و از آنها به عنوان بلوک‌های ساخته‌شده و قابل استفاده مجدد در برنامه‌هایتان استفاده کنید. توابع به شما این امکان را می‌دهند که کد خود را به شکل سازمان‌دهی شده‌تر، قابل مدیریت‌تر، و قابلیت استفاده مجدد بالاتری داشته باشید. در ادامه، توضیح کاملی در مورد توابع در PHP ارائه می‌شود.
+        </p>
+
+        <p class="leading-8">
+            <strong>تعریف تابع:</strong>
+
+        شما می‌توانید یک تابع را به کمک کلمه کلیدی <strong>function</strong> در PHP تعریف کنید. معمولاً یک تابع شامل نام تابع، پارامترها (اختیاری) و بلاک کدی است که تابع اجرا می‌کند. مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function greet($name) {
+        echo "سلام، $name!";
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>فراخوانی تابع:</strong>
+        بعد از تعریف یک تابع، شما می‌توانید آن را با فراخوانی نام تابع و ارسال مقادیر پارامترها به آن فراخوانی کنید. مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        greet("علی"); // این تابع "سلام، علی!" را چاپ می‌کند
+        </pre>
+        <p class="leading-8">
+            <strong>پارامترها:</strong>
+
+        توابع می‌توانند پارامترهایی (ورودی‌ها) را بپذیرند. پارامترها درون پرانتز پس از نام تابع تعریف می‌شوند و با کاما از یکدیگر جدا می‌شوند. مقادیری که به عنوان پارامترها فرستاده می‌شوند، در داخل تابع مورد استفاده قرار می‌گیرند. مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function add($num1, $num2) {
+        $result = $num1 + $num2;
+        return $result;
+        }
+        $sum = add(5, 3); // $sum برابر با 8 خواهد بود
+        </pre>
+        <p class="leading-8">
+            <strong>بازگشت مقدار:</strong>
+
+        توابع می‌توانند مقداری را با استفاده از کلمه کلیدی return به عنوان خروجی برگردانند. این مقدار می‌تواند یک مقدار عددی، متنی، آرایه، یا حتی یک شیء باشد. مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function multiply($num1, $num2) {
+        $result = $num1 * $num2;
+        return $result;
+        }
+
+        $product = multiply(4, 7); // $product برابر با 28 خواهد بود
+        </pre>
+        <p class="leading-8">
+            <strong>    متغیرهای محلی:</strong>
+        متغیرهایی که در داخل یک تابع تعریف می‌شوند، متغیرهای محلی هستند و تنها در داخل تابع دسترسی دارند. این به شما اجازه می‌دهد تا متغیرهای محلی برای محاسبات مخصوص به تابع استفاده کنید بدون تداخل با متغیرهای خارج از تابع.
+        </p>
+        <p class="leading-8">
+            <strong>مثال توابع تودرتو:</strong>
+        شما می‌توانید توابع را تودرتو (nested) تعریف کنید، به این معنا که یک تابع دیگر را در داخل یک تابع دیگر فراخوانی کنید. این به شما اجازه می‌دهد که توابع را به شکل سلسله‌مراتبی برای بهبود سازماندهی کدتان استفاده کنید.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function calculate($a, $b) {
+        function add($x, $y) {
+        return $x + $y;
+        }
+
+        function subtract($x, $y) {
+        return $x - $y;
+        }
+
+        $sum = add($a, $b);
+        $difference = subtract($a, $b);
+
+        return [$sum, $difference];
+        }
+
+        $result = calculate(10, 5); // $result برابر با آرایه [15, 5] خواهد بود
+        </pre>
+        <p class="leading-8">
+            <strong>توضیحات:</strong>
+        توابع می‌توانند توسط توضیحات (داکبلوک) توصیف شوند تا توسعه‌دهندگان دیگر بتوانند بفهمند که چه کاری انجام می‌دهند. توضیحات با استفاده از کلمه کلیدی <strong>/** ... */ یا //</strong> در ابتدای تعریف تابع قرار م
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        /**
+        * این تابع، دو عدد را جمع می‌کند و نتیجه را برمی‌گرداند.
+        *
+        * @param int $num1 اولین عدد جهت جمع.
+        * @param int $num2 دومین عدد جهت جمع.
+        * @return int جمع دو عدد.
+        */
+        function addNumbers($num1, $num2) {
+        // انجام عمل جمع
+        $result = $num1 + $num2;
+
+        // بازگرداندن نتیجه
+        return $result;
+        }
+        </pre>
+    </div>
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md"> تمرین</h2>
+        <p class="leading-8">
+            <strong> تمرین 1: محاسبه معدل دانشجویی</strong>
+        نوشتن یک تابع به نام calculateAverage که میانگین نمرات دانشجو را محاسبه کرده و آن را برگرداند. تابع باید یک آرایه از نمرات را به عنوان ورودی بپذیرد و میانگین آنها را محاسبه کند.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function calculateAverage($grades) {
+        // محاسبه میانگین نمرات و بازگرداندن آن
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>تمرین 2: تبدیل متن به حروف بزرگ</strong>
+        نوشتن یک تابع به نام convertToUppercase که یک رشته را به حروف بزرگ تبدیل کند و نتیجه را برگرداند.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function convertToUppercase($text) {
+        // تبدیل متن به حروف بزرگ و بازگرداندن نتیجه
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>تمرین 3: تولید رمز عبور تصادفی</strong>
+        نوشتن یک تابع به نام generateRandomPassword که یک رمز عبور تصادفی با طول مشخص را تولید کند و آن را برگرداند. مثلاً رمز عبور 8 حرفی.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function generateRandomPassword($length) {
+        // تولید رمز عبور تصادفی و بازگرداندن آن
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>تمرین 4: تعداد کلمات یک نوشته</strong>
+            نوشتن یک تابع به نام countWords که تعداد کلمات یک نوشته را برا اساس اسپیس شمارش کند
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function countWords($string) {
+        // شمارش تعدا کلمات یک رشته
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>تمرین 5: محاسبه BMI</strong>
+            نوشتن یک تابع به نام calculateBMI این تابع میزان BMI (شاخص توده بدنی) را بر اساس وزن و قد محاسبه می‌کند.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function calculateBMI($weightKg, $heightM) {
+        // محاسبه BMI
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>تمرین 6: بیشترین عدد در یک آرایه</strong>
+            نوشتن یک تابع به نام findMax که بشترین عدد یک آرایه را بازگردانی می کند.
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        function calculateBMI($weightKg, $heightM) {
+        // بیشترین عدد یک آرایه
+        }
+        </pre>
+
+    </div>
+</div>
+</body>
+</html>
