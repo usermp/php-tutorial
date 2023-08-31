@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP - Episode 6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="//fdn.fontcdn.ir">
+    <link rel="preconnect" href="//v1.fontapi.ir">
+    <link href="https://v1.fontapi.ir/css/Sahel:300;400;600;700" rel="stylesheet">
+    <style>
+        * {
+            font-family: Sahel, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto grid grid-cols-12 gap-20">
+    <h1 class="text-[22px] font-bold text-center col-span-12 text-[red] w-full">جلسه ششم</h1>
+
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            فرم‌ها و پردازش فرم‌ها</h2>
+        <p class="leading-8">
+            <strong>فرم‌ها (Forms) : </strong>
+            فرم‌ها (Forms) یک قسمت مهم از توسعه وب در PHP و دیگر زبان‌های برنامه‌نویسی وب هستند. از آنجایی که PHP یک
+            زبان برنامه‌نویسی سمت سرور است، می‌توانید از آن برای ایجاد و پردازش فرم‌ها در وب‌سایت‌های خود استفاده کنید.
+            در ادامه توضیحات کاملی در مورد فرم‌ها و پردازش آنها در PHP ارائه می‌دهم:
+        </p>
+        <p class="leading-8">
+           <strong> 1. ایجاد فرم</strong>
+            یک فرم در HTML با استفاده از تگ
+            <strong>&lt;form&gt;</strong> ایجاد می‌شود. این تگ معمولاً در بخشی از صفحه وب قرار داده می‌شود که باید
+            اطلاعات ورودی از کاربر را دریافت
+            کند. مثال:
+        </p>
+
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+         &lt;html&gt;
+         &lt;head&gt;
+             &lt;title&gt;فرم ورود &lt;/title&gt;
+         &lt;/head&gt;
+         &lt;body&gt;
+         &lt;form method="post" action="process.php"&gt;
+             &lt;label for="username"&gt;نام کاربری: &lt;/label&gt;
+             &lt;input type="text" id="username" name="username"&gt; &lt;br&gt;
+
+             &lt;label for="password"&gt;رمز عبور: &lt;/label&gt;
+             &lt;input type="password" id="password" name="password"&gt; &lt;br&gt;
+
+             &lt;input type="submit" value="ورود"&gt;
+         &lt;/form&gt;
+         &lt;/body&gt;
+         &lt;/html&gt;
+        </pre>
+        <p class="leading-8">
+        <strong>2. ویژگی‌های فرم</strong>
+        </p>
+        <ul>
+            <li><strong>method:</strong> مشخص می‌کند که اطلاعات فرم باید با چه روشی <strong>(GET یا POST)</strong> به سمت سرور ارسال شود.</li>
+            <li><strong>action:</strong> مسیری است که فرم بعد از ارسال اطلاعات به آن منتقل می‌شود.</li>
+        </ul>
+        <p class="leading-8">
+        <strong>3. دریافت داده‌ها در PHP</strong>
+        بعد از ارسال فرم، اطلاعات ورودی توسط PHP دریافت می‌شوند. این اطلاعات در متغیر <strong>$_POST (برای روش POST)</strong> یا
+        <strong>$_GET (برای روش GET)</strong> در دسترس قرار می‌گیرند. مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+            }elseif($_SERVER["REQUEST_METHOD"] == "GET") {
+                $username = $_GET["username"];
+                $password = $_GET["password"];
+            }else{
+                die("مقادیر فرم ارسال نشده است");
+            }
+
+        </pre>
+        <p class="leading-8">
+        <strong>4. اعتبارسنجی داده‌ها</strong>
+        به منظور افزایش امنیت و دقت، داده‌های ورودی باید اعتبارسنجی شوند. این اعتبارسنجی ممکن است شامل بررسی نحوه و
+        نوع داده‌ها، حداقل و حداکثر طول و ... باشد.
+        </p>
+        <p class="leading-8">
+        <strong>5. پردازش داده‌ها</strong>
+        بعد از دریافت داده‌ها و اعتبارسنجی، می‌توانید این داده‌ها را برای انجام عملیات مورد نیاز (مثلاً ثبت در
+        پایگاه داده یا اجرای محاسبات) استفاده کنید.
+        </p>
+        <p class="leading-8">
+            <strong>6. نمایش خروجی</strong>
+        در نهایت، معمولاً یک صفحه خروجی به کاربر نمایش داده می‌شود تا او بتواند نتیجه عملیات را ببیند.
+        </p>
+        <p class="leading-8">
+        <strong>7. امنیت</strong>
+        حتماً باید توجه داشته باشید که فرم‌های شما باید از نقاط ضعف امنیتی محافظت شوند. از توابع مربوط به امنیت
+        مانند <strong>htmlspecialchars()</strong> برای جلوگیری از حملات XSS (Cross-Site Scripting) و از پارامترهای محافظتی برای
+        جلوگیری از حملات تزریق SQL استفاده کنید.
+        </p>
+        <p class="leading-8">
+        مثال: پردازش یک فرم ورود
+        در ادامه یک مثال ساده برای پردازش یک فرم ورود در PHP آورده شده است:
+        </p>
+
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+
+            // اعتبارسنجی و بررسی مدخلات کاربر
+            if ($username == "admin" && $password == "password") {
+                echo "ورود موفقیت‌آمیز!";
+            } else {
+                echo "نام کاربری یا رمز عبور اشتباه است.";
+            }
+        }
+        </pre>
+        <p class="leading-8">
+        این تمامی مراحل مربوط به ایجاد و پردازش یک فرم  بسیار ساده در PHP را به صورت خلاصه نشان می‌دهد.
+        </p>
+
+    </div>
+
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+             مثال </h2>
+        <p class="leading-8">
+            <strong>1. مثال: فرم تماس با ما</strong>
+            در این مثال، یک فرم تماس با ما ایجاد می‌کنیم. کاربران نام، ایمیل و پیام خود را وارد می‌کنند و اطلاعات به یک صفحه پردازش ارسال می‌شود.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;فرم تماس با ما&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;h1&gt;تماس با ما&lt;/h1&gt;
+        &lt;form method="post" action="process_contact.php"&gt;
+            &lt;label for="name"&gt;نام:&lt;/label&gt;
+            &lt;input type="text" id="name" name="name" required&gt;&lt;br&gt;
+
+            &lt;label for="email"&gt;ایمیل:&lt;/label&gt;
+            &lt;input type="email" id="email" name="email" required&gt;&lt;br&gt;
+
+            &lt;label for="message"&gt;پیام:&lt;/label&gt;
+            &lt;textarea id="message" name="message" rows="4" required&gt;&lt;/textarea&gt;&lt;br&gt;
+
+            &lt;input type="submit" value="ارسال"&gt;
+        &lt;/form&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </pre>
+        <p class="leading-8">
+            <strong> صفحه پردازش PHP (process_contact.php):</strong>
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $message = $_POST["message"];
+
+            // اعتبارسنجی داده‌ها (مثلاً برای جلوگیری از حملات SQL Injection)
+            $name = htmlspecialchars($name);
+            $email = htmlspecialchars($email);
+            $message = htmlspecialchars($message);
+
+            // در اینجا می‌توانید اطلاعات را به پایگاه داده ذخیره کنید یا به ایمیل ارسال کنید.
+
+            // نمایش پیام موفقیت‌آمیز به کاربر
+            echo "پیام شما با موفقیت ارسال شد. با تشکر از تماس شما!";
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>2. مثال: فرم ثبت نام</strong>
+        در این مثال، یک فرم ثبت نام ایجاد می‌کنیم که کاربران نام، ایمیل، رمز عبور و تأیید رمز عبور را وارد می‌کنند.
+        فرم HTML:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;فرم ثبت نام&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+            &lt;h1&gt;ثبت نام&lt;/h1&gt;
+            &lt;form method="post" action="process_registration.php"&gt;
+                &lt;label for="name"&gt;نام:&lt;/label&gt;
+                &lt;input type="text" id="name" name="name" required&gt;&lt;br&gt;
+
+                &lt;label for="email"&gt;ایمیل:&lt;/label&gt;
+                &lt;input type="email" id="email" name="email" required&gt;&lt;br&gt;
+
+                &lt;label for="password"&gt;رمز عبور:&lt;/label&gt;
+                &lt;input type="password" id="password" name="password" required&gt;&lt;br&gt;
+
+                &lt;label for="confirm_password"&gt;تأیید رمز عبور:&lt;/label&gt;
+                &lt;input type="password" id="confirm_password" name="confirm_password" required&gt;&lt;br&gt;
+
+                &lt;input type="submit" value="ثبت نام"&gt;
+            &lt;/form&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+        </pre>
+        <p class="leading-8">
+        <strong>صفحه پردازش PHP (process_registration.php):</strong>
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $confirm_password = $_POST["confirm_password"];
+
+            // اعتبارسنجی داده‌ها
+            $name = htmlspecialchars($name);
+            $email = htmlspecialchars($email);
+
+            if ($password != $confirm_password) {
+                echo "رمز عبور و تأیید رمز عبور مطابقت ندارند.";
+            } else {
+                // در اینجا می‌توانید اطلاعات را به پایگاه داده ذخیره کنید و یا اقدامات دیگری انجام دهید.
+
+                // نمایش پیام موفقیت‌آمیز به کاربر
+                echo "ثبت نام شما با موفقیت انجام شد. به سیستم وارد شوید!";
+            }
+        }
+        </pre>
+        <p class="leading-8">
+        <strong>3. مثال: فرم آپلود فایل</strong>
+        در این مثال، یک فرم آپلود فایل ایجاد می‌کنیم که به کاربران امکان آپلود تصاویر را می‌دهد.
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;فرم آپلود فایل&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;h1&gt;آپلود تصویر&lt;/h1&gt;
+        &lt;form method="post" action="process_upload.php" enctype="multipart/form-data"&gt;
+            &lt;label for="file"&gt;فایل تصویر:&lt;/label&gt;
+            &lt;input type="file" id="file" name="file" accept="image/*" required&gt;&lt;br&gt;
+
+            &lt;input type="submit" value="آپلود"&gt;
+        &lt;/form&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+
+        </pre>
+        <strong> صفحه پردازش PHP (process_upload.php):</strong>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // اعتبارسنجی و آپلود تصویر
+            $file_name = $_FILES["file"]["name"];
+            $file_tmp = $_FILES["file"]["tmp_name"];
+            $file_size = $_FILES["file"]["size"];
+
+            // اعتبارسنجی و محدودیت‌های مربوط به فرمت و اندازه تصویر را اعمال کنید.
+
+            if (move_uploaded_file($file_tmp, "uploads/" . $file_name)) {
+                echo "تصویر با موفقیت آپلود شد!";
+            } else {
+                echo "خطا در آپلود تصویر.";
+            }
+        }
+        </pre>
+        در این مثال‌ها، شما می‌توانید با ایجاد فرم‌ها در HTML و پردازش آنها در PHP، تعامل کاربران با وب‌سایت خود را بهبود ببخشید. همچنین باید به امنیت و اعتبارسنجی داده‌ها توجه کافی داشته باشید تا از حملات مخرب جلوگیری کنید.
+
+    </div>
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+             تمرین </h2>
+        <p class="leading-8">
+            <strong>تمرین 1: فرم تماس با ما بهبود یافته</strong>
+
+        ایجاد یک فرم تماس با ما با فیلدهای دیگری مانند تلفن، موضوع پیام و تعداد کاراکترهای محدودیت پیام.
+        اعتبارسنجی تلفن و ایمیل با استفاده از ابزارهای PHP.
+        اعتبارسنجی محتوای پیام بر اساس تعداد کاراکترهای محدودیتی که تعیین کرده‌اید.
+        </p>
+        <p class="leading-8">
+            <strong>تمرین 2: سیستم ثبت نام و ورود کاربران</strong>
+
+        ایجاد یک فرم ثبت نام کاربران با فیلدهای نام، ایمیل، رمز عبور و تأیید رمز عبور.
+        پیاده‌سازی یک صفحه ورود کاربران که از ایمیل و رمز عبور استفاده می‌کند.
+        اعتبارسنجی مطابقت رمز عبور و تأیید رمز عبور.
+        </p>
+        <p class="leading-8">
+            <strong> تمرین 3: آپلود و نمایش تصاویر</strong>
+
+        ایجاد یک فرم آپلود تصاویر که تصاویر را در پوشه‌ای در سرور ذخیره می‌کند.
+        نمایش لیست تصاویر آپلود شده به کاربران با استفاده از PHP و HTML.
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
