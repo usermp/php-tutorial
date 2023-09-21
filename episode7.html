@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP - Episode 7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="//fdn.fontcdn.ir">
+    <link rel="preconnect" href="//v1.fontapi.ir">
+    <link href="https://v1.fontapi.ir/css/Sahel:300;400;600;700" rel="stylesheet">
+    <style>
+        * {
+            font-family: Sahel, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto grid grid-cols-12 gap-20">
+    <h1 class="text-[22px] font-bold text-center col-span-12 text-[red] w-full">جلسه هفتم</h1>
+
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            MySQL پایگاه داده رابطه‌ای</h2>
+        <p class="leading-8">
+            <strong>پایگاه داده MySQL : </strong>
+            یک سیستم مدیریت پایگاه داده رابطه‌ای <strong>(RDBMS)</strong> است که به شما امکان ذخیره و مدیریت داده‌ها را
+            ارائه می‌دهد. در اینجا نحوه اتصال به پایگاه داده MySQL و انجام عملیات مختلف با آن در PHP توضیح داده شده است:
+            <br>
+            <strong>اتصال به پایگاه داده MySQL:</strong>
+            برای اتصال به پایگاه داده MySQL از تابع <strong>mysqli_connect() یا PDO</strong> در PHP استفاده می‌شود. به
+            عنوان مثال:
+
+            با mysqli_connect():
+
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+
+        $host = 'localhost';
+        $username = 'نام_کاربری';
+        $password = 'رمز_عبور';
+        $database = 'نام_پایگاه_داده';
+
+        $connection = mysqli_connect($host, $username, $password, $database);
+
+        if (!$connection) {
+        die('اتصال به پایگاه داده ناموفق بود: ' . mysqli_connect_error());
+        }
+        </pre>
+
+        <strong>با PDO:</strong>
+
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+
+        $host = 'localhost';
+        $username = 'نام_کاربری';
+        $password = 'رمز_عبور';
+        $database = 'نام_پایگاه_داده';
+
+        try {
+        $connection = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+        die('اتصال به پایگاه داده ناموفق بود: ' . $e->getMessage());
+        }
+        </pre>
+        <p class="leading-8">
+            <strong> اجرای کوئری‌ها:</strong>
+            بعد از اتصال به پایگاه داده، می‌توانید کوئری‌های SQL را اجرا کنید. به عنوان مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $host = 'localhost';
+        $username = 'نام_کاربری';
+        $password = 'رمز_عبور';
+        $database = 'نام_پایگاه_داده';
+
+        $connection = mysqli_connect($host, $username, $password, $database);
+
+        if (!$connection) {
+        die('اتصال به پایگاه داده ناموفق بود: ' . mysqli_connect_error());
+        }
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($connection, $query);
+        </pre>
+        <strong>یا با PDO:</strong>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $host = 'localhost';
+        $username = 'نام_کاربری';
+        $password = 'رمز_عبور';
+        $database = 'نام_پایگاه_داده';
+
+        try {
+        $connection = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+        die('اتصال به پایگاه داده ناموفق بود: ' . $e->getMessage());
+        }
+        $query = "SELECT * FROM users";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        </pre>
+        <p class="leading-8">
+            <strong>خواندن و استفاده از نتایج:</strong>
+            بعد از اجرای کوئری، می‌توانید نتایج را خوانده و در متغیرها ذخیره کنید. به عنوان مثال:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        while ($row = mysqli_fetch_assoc($result)) {
+        echo "نام: " . $row["نام"] . ", ایمیل: " . $row["ایمیل"];
+        }
+        </pre>
+        <strong>
+            یا با PDO:
+        </strong>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo "نام: " . $row["نام"] . ", ایمیل: " . $row["ایمیل"];
+        }
+        </pre>
+        <p class="leading-8">
+            <strong>قطع اتصال:</strong>
+            در انتها باید اتصال به پایگاه داده را قطع کنید تا منابع سرور را آزاد کنید:
+        </p>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        mysqli_close($connection);
+        </pre>
+        <strong>یا با PDO:</strong>
+        <pre class="bg-[#ccc] text-[#000] p-2 rounded-lg">
+        $connection = null;
+        </pre>
+        این توضیحات مختصری در مورد اتصال به پایگاه داده MySQL و انجام عملیات اصلی با آن در PHP است. با توجه به نیازهای
+        خود، می‌توانید عملیات‌های دیگری مانند افزودن داده‌ها، به‌روزرسانی و حذف داده‌ها نیز انجام دهید. همچنین، باید
+        موارد امنیتی مهمی مانند استفاده از prepared statements در کوئری‌ها را در نظر بگیرید تا از تزریق SQL جلوگیری
+        کنید.
+
+    </div>
+
+    <div class="border border-[#ccc] shadow-xl col-span-12 bg-[#ebebeb] rounded-lg p-8">
+        <h2 class="text-lg font-bold mb-2 border border-[#ccc] w-fit mx-auto mt-[-55px] bg-[#ebebeb] p-[10px] rounded-md">
+            phpMyAdmin</h2>
+        <p class="leading-8">
+            <strong>phpMyAdmin</strong> یک نرم‌افزار متن‌باز و رایگان مدیریت پایگاه داده MySQL است. این ابزار به شما
+            امکان می‌دهد تا از طریق یک واسط وب، پایگاه داده‌های MySQL خود را مدیریت و مشاهده کنید. در ادامه، توضیح کاملی
+            از phpMyAdmin ارائه داده شده است:
+            <br>
+            <strong>ویژگی‌های phpMyAdmin:</strong>
+            <br>
+            <strong>مدیریت دیتابیس:</strong> phpMyAdmin به شما امکان مدیریت دیتابیس‌های MySQL شما از جمله ایجاد، ویرایش
+            و حذف دیتابیس‌ها را می‌دهد.
+            <br>
+            <strong>مدیریت جداول:</strong> شما می‌توانید جداول دیتابیس را مشاهده و تعریف کنید و همچنین اطلاعات مرتبط با
+            آن‌ها را ویرایش کنید.
+            <br>
+            <strong>اجرای کوئری‌ها:</strong> با استفاده از phpMyAdmin، می‌توانید کوئری‌های SQL را بر روی دیتابیس‌های خود
+            اجرا کرده و داده‌ها را با استفاده از SQL مدیریت کنید.
+            <br>
+            <strong>ویرایش داده:</strong> phpMyAdmin به شما این امکان را می‌دهد که داده‌های موجود در جداول را ویرایش و
+            به‌روزرسانی کنید.
+            <br>
+            <strong>ایجاد نمودارها:</strong> شما می‌توانید نمودارها و گزارش‌های مربوط به داده‌های خود ایجاد کنید و آن‌ها
+            را بصورت تصویری نمایش دهید.
+            <br>
+            <strong>کپی و انتقال دیتابیس:</strong> این ابزار به شما اجازه می‌دهد تا دیتابیس‌ها را کپی کرده و به سادگی به
+            سرورهای دیگر انتقال دهید.
+            <br>
+            <strong>مدیریت کاربران:</strong> شما می‌توانید کاربران و دسترسی‌های آن‌ها به دیتابیس‌ها را مدیریت کنید.
+            <br>
+            <strong>واسط کاربری وب:</strong> phpMyAdmin دارای یک واسط کاربری وب است که به شما اجازه می‌دهد که به آسانی
+            با پایگاه داده‌های MySQL خود از طریق مرورگر وب ارتباط برقرار کنید. این به شما این امکان را می‌دهد تا از هر
+            کامپیوتری با اینترنت به دیتابیس‌های خود دسترسی پیدا کنید.
+            <br>
+            <strong>پشتیبانی از زبان‌های مختلف:</strong> phpMyAdmin به شما این امکان را می‌دهد که با استفاده از زبان‌های
+            مختلفی مانند PHP، آلمانی، اسپانیایی، فرانسوی و زبان‌های دیگر از آن استفاده کنید.
+            <br>
+            <strong>امنیت:</strong> phpMyAdmin دارای امکانات امنیتی متعددی مانند ورود تعیین شده با رمز، قابلیت تعریف
+            دسترسی‌های کاربر و گزارش‌های ورود به سیستم است.
+            <br>
+            <strong>جامعیت و متن‌باز بودن:</strong> phpMyAdmin یک نرم‌افزار متن‌باز است که توسعه‌یافته و قابل تنظیم است.
+            این به شما این امکان را می‌دهد که تغییرات دلخواه خود را در کد منبع اعمال کنید.
+            <br>
+            phpMyAdmin یک ابزار مفید برای مدیریت پایگاه داده MySQL است و به برنامه‌نویسان و مدیران دیتابیس کمک می‌کند تا
+            به سادگی و با امنیت بالا داده‌های خود را مدیریت کنند.
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
